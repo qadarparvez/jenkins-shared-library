@@ -1,0 +1,10 @@
+def call(string credId, sring imageName){
+  withCredentials([usernamePassword(
+                    credentialsId: "credId",
+                    usernameVariable: "dockerHubUser",
+                    passwordVariable: "dockerHubPass")]){
+                        sh """
+                        echo "${dockerHubPass}" | docker login -u "${dockerHubUser}" --password-stdin
+                        docker image tag imageName ${dockerHubUser}/imageName
+                        docker push ${dockerHubUser}/imageName:latest
+                        """
