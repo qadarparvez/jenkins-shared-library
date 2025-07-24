@@ -8,3 +8,5 @@ def call(string credId, sring imageName){
                         docker image tag imageName ${dockerHubUser}/imageName
                         docker push ${dockerHubUser}/imageName:latest
                         """
+
+
